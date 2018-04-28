@@ -28,8 +28,11 @@ public class Maumau {
 		try {
 			AgentController agent = container.createNewAgent("Gamemaster", GamemasterAgent.class.getName(), args);
 			agent.start();
-			
-			for(int i = 1; i <= numberOfPlayers; i++) {
+			//create one clever player
+			agent = container.createNewAgent("Player 1", CleverPlayerAgent.class.getName(), args);
+			agent.start();
+
+			for(int i = 2; i <= numberOfPlayers; i++) {
 				agent = container.createNewAgent("Player "+i, PlayerAgent.class.getName(), args);
 				agent.start();
 			}

@@ -47,7 +47,7 @@ public class PlayerBehaviour extends CyclicBehaviour {
     /**
      * Gibt Spielerhand als String zurück.
      */
-    private String getPlayerHand() {
+    protected String getPlayerHand() {
         String hand = "";
         for (String card : cards) {
             hand = hand + card + "  ";
@@ -59,7 +59,7 @@ public class PlayerBehaviour extends CyclicBehaviour {
      * Prüft ob eine spielbare Karte existiert und ob es die letzte Karte ist. Falls
      * ja, wird diese verschickt. Falls nicht wird gepasst.
      */
-    private String getPlayCard(String topCard) {
+    protected String getPlayCard(String topCard) {
         System.out.println(myAgent.getLocalName() + ":   Was nehme ich denn? (" + getPlayerHand() + ").");
         for (String card : cards) {
             if (card.charAt(0) == topCard.charAt(0) && (topCard.charAt(1) != '7' && topCard.charAt(1) != '8' ||

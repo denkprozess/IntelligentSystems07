@@ -1,6 +1,7 @@
 package UE3;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -96,6 +97,11 @@ public class GamemasterBehaviour extends CyclicBehaviour {
                 // nachricht an den nächsten spieler
                 sendMessage(getNextPlayer(), ("DECKCARD;" + playStack.get(0)));
             }
+        }else{
+            System.out.println(myAgent.getLocalName() + ": Spielzug wurde NICHT!!! akzeptiert!!!");
+            System.out.println("Players Card: " + playerCard);
+            System.out.println("Top Card: " + playStack.get(0));
+            System.out.println("Color wish: " + colorWish);
         }
     }
 
@@ -134,6 +140,7 @@ public class GamemasterBehaviour extends CyclicBehaviour {
     private String readColorWishIfJack(String playerCard) {
         if(playerCard.length()>2){
             colorWish = playerCard.charAt(2);
+            System.out.println("noted color wish: " + colorWish);
             playerCard = playerCard.substring(0,2);
         }
         return playerCard;

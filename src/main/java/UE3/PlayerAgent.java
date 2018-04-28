@@ -1,5 +1,6 @@
 package UE3;
 
+import UE3.SendRegisterMessageBehaviour;
 import jade.core.Agent;
 
 public class PlayerAgent extends Agent {
