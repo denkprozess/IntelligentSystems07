@@ -90,9 +90,12 @@ public class PlanningProblem {
 
 	private void printSoftConstraints() {
 
-		// For each s_constraint
-			// Check if constraint is violated
-			// print result
+		System.out.println("Soft Constraints (true if violated):");
+
+		for (ISoftConstraint sc : this.softConstraints) {
+			System.out.println(sc.getClass().getSimpleName() + ": " + sc.isConstraintViolated(jobs, plan));
+		}
+		System.out.println("=====================================================================");
 
 	}
 

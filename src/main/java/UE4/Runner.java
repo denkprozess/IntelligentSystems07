@@ -83,7 +83,14 @@ public class Runner {
 		
 		// Job 3
 
-		// Job 4
+        // Job 4
+        ConfigurationSchedule cs4 = new ConfigurationSchedule();
+        cs4.createConfiguration(job4.getProduct().getVariants().get(0).getOperationSequence().get(0), 100, 103);
+        cs4.createConfiguration(job4.getProduct().getVariants().get(0).getOperationSequence().get(1), 105, 107);
+        cs4.createConfiguration(job4.getProduct().getVariants().get(0).getOperationSequence().get(2), 108, 111);
+
+        ScheduledJob sj4 = new ScheduledJob(job4, 100, 111, cs4);
+        plan.addScheduledJob(sj4);
 
 		// Job 5
 
@@ -99,6 +106,8 @@ public class Runner {
 
 		planningProblem.setPlan(plan);
 		planningProblem.addHardConstraint(new AllJobsScheduledConstraint(planningProblem.getJobs(), plan));
+
+        planningProblem.addSoftConstraint(new AllJobsReadyBeforeEndConstraint());
 		planningProblem.print();
 	}
 }
