@@ -66,7 +66,7 @@ public class Runner {
 		// Job 1
 		ConfigurationSchedule cs1 = new ConfigurationSchedule();
 		cs1.createConfiguration(job1.getProduct().getVariants().get(0).getOperationSequence().get(0), 2, 10);
-		cs1.createConfiguration(job1.getProduct().getVariants().get(0).getOperationSequence().get(1), 10, 18);
+		cs1.createConfiguration(job1.getProduct().getVariants().get(0).getOperationSequence().get(1), 10, 21);
 		cs1.createConfiguration(job1.getProduct().getVariants().get(0).getOperationSequence().get(2), 18, 30);
 
 		ScheduledJob sj1 = new ScheduledJob(job1, 2, 30, cs1);
@@ -98,7 +98,10 @@ public class Runner {
 		// Job 10
 
 		planningProblem.setPlan(plan);
-		planningProblem.addHardConstraint(new AllJobsScheduledConstraint(planningProblem.getJobs(), plan));
+		
+		planningProblem.addHardConstraint(new AllJobsScheduledConstraint());
+		planningProblem.addHardConstraint(new NoDoubleConfigurationOnResourceConstraint());
+		
 		planningProblem.print();
 	}
 }
