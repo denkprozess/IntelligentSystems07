@@ -4,16 +4,7 @@ import java.util.List;
 
 public class AllJobsScheduledConstraint implements IHardConstraint {
 
-	List<Job> jobs;
-	Plan plan;
-
-	public AllJobsScheduledConstraint(List<Job> jobs, Plan plan) {
-		this.jobs = jobs;
-		this.plan = plan;
-	}
-
-	@Override
-	public boolean isConstraintViolated() {
+	public boolean isConstraintViolated(List<Job> jobs, List<Resource> resources, Plan plan) {
 
 		int jobCounter = 0;
 

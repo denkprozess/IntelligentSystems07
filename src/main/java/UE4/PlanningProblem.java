@@ -83,7 +83,7 @@ public class PlanningProblem {
 		System.out.println("Hard Constraints (true if violated):");
 		
 		for (IHardConstraint hc : this.hardConstraints) {
-			System.out.println(hc.getClass().getSimpleName() + ": " + hc.isConstraintViolated());
+			System.out.println(hc.getClass().getSimpleName() + ": " + hc.isConstraintViolated(jobs, resources, plan));
 		}
 		System.out.println("=====================================================================");
 	}
