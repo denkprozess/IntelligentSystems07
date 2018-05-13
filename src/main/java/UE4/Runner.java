@@ -82,8 +82,17 @@ public class Runner {
 		plan.addScheduledJob(sj2);		
 		
 		// Job 3
+        // Third step before second step
+        ConfigurationSchedule cs3 = new ConfigurationSchedule();
+        cs3.createConfiguration(job3.getProduct().getVariants().get(0).getOperationSequence().get(0), 30, 31);
+        cs3.createConfiguration(job3.getProduct().getVariants().get(0).getOperationSequence().get(2), 31, 32);
+        cs3.createConfiguration(job3.getProduct().getVariants().get(0).getOperationSequence().get(1), 32, 34);
+
+        ScheduledJob sj3 = new ScheduledJob(job3, 30, 34, cs3);
+        plan.addScheduledJob(sj3);
 
         // Job 4
+        // End is after latest possible end
         ConfigurationSchedule cs4 = new ConfigurationSchedule();
         cs4.createConfiguration(job4.getProduct().getVariants().get(0).getOperationSequence().get(0), 100, 103);
         cs4.createConfiguration(job4.getProduct().getVariants().get(0).getOperationSequence().get(1), 105, 107);
@@ -108,6 +117,7 @@ public class Runner {
 		
 		planningProblem.addHardConstraint(new AllJobsScheduledConstraint());
 		planningProblem.addHardConstraint(new NoDoubleConfigurationOnResourceConstraint());
+        planningProblem.addHardConstraint(new CorrectSequenceForEveryProductConstraint());
 		
         planningProblem.addSoftConstraint(new AllJobsReadyBeforeEndConstraint());
 		planningProblem.print();
