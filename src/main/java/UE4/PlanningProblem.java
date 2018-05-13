@@ -79,11 +79,13 @@ public class PlanningProblem {
 	}
 
 	private void printHardConstraints() {
-
-		// For each h_constraint
-			// Check if constraint is violated
-			// print result
 		
+		System.out.println("Hard Constraints (true if violated):");
+		
+		for (IHardConstraint hc : this.hardConstraints) {
+			System.out.println(hc.getClass().getSimpleName() + ": " + hc.isConstraintViolated());
+		}
+		System.out.println("=====================================================================");
 	}
 
 	private void printSoftConstraints() {
@@ -91,7 +93,7 @@ public class PlanningProblem {
 		// For each s_constraint
 			// Check if constraint is violated
 			// print result
-		
+
 	}
 
 	private void printEvents() {

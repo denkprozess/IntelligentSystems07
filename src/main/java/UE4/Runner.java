@@ -98,6 +98,7 @@ public class Runner {
 		// Job 10
 
 		planningProblem.setPlan(plan);
+		planningProblem.addHardConstraint(new AllJobsScheduledConstraint(planningProblem.getJobs(), plan));
 		planningProblem.print();
 	}
 }
